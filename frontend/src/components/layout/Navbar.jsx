@@ -124,9 +124,7 @@ const AppNavbar = ({ noSticky }) => {
    */
   const renderAuthenticatedNav = () => (
     <>
-      <Nav.Link as={Link} to="/payment">
-        <FaCreditCard className="me-1" /> Add Credits
-      </Nav.Link>
+
 
       <Nav.Link as={Link} to="/profile">
         <FaUser className="me-1" /> {user?.username || 'Profile'}
