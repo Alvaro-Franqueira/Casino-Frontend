@@ -110,7 +110,7 @@ const calculateTotalBet = (bets) => {
 
 function RouletteGame() {
   // ===== Hooks =====
-  const { user, updateUserBalance } = useAuth();
+  const { user } = useAuth();
   
   // ===== State =====
   const [userBalance, setUserBalance] = useState(0);

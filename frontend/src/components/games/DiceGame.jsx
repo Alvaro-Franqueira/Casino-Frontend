@@ -47,7 +47,7 @@ const PAYOUT_MULTIPLIERS = {
 
 const DiceGame = () => {
   // ===== Hooks =====
-  const { user, updateUserBalance } = useAuth();
+  const { user } = useAuth();
   
   // ===== State =====
   const [userBalance, setUserBalance] = useState(0);
