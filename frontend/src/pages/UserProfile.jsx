@@ -366,7 +366,7 @@ const stats = calculateStats();
                     <Card.Header style={{ margin: 10, marginLeft:20, padding: 0, display: 'inline-block' }}>
                             <Tabs defaultActiveKey="stats" id="profile-tabs" className="card-header-tabs justify-content-around">
                                 {/* Statistics Tab - Balance chart and game stats */}
-                                <Tab eventKey="stats" title={<><FaCoins className="me-1" /> Statistics</>}>
+                                <Tab eventKey="stats" title={<><FaCoins className="me-1" /> <Overview></Overview></>}>
                                     <div className="p-3 card-tab-body">
                                         <BalanceChart 
                                             balanceHistory={balanceHistory}
@@ -380,7 +380,6 @@ const stats = calculateStats();
                                 <Tab eventKey="betStats" title={<><FaPercentage className="me-1" /> Bet Statistics</>}>
                                     <div className="p-3 card-tab-body">
                                         <h5 className="mb-3">Betting Statistics</h5>
-                                        <p className="text-muted">Here you can find a summary of your betting activity, including total bets, win rate, and more.</p>
                                         <Button
                                             variant="outline-secondary"
                                             className="mb-3"
