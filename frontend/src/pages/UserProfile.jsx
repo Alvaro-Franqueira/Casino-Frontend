@@ -78,6 +78,8 @@ const UserProfile = () => {
     const [currentPage, setCurrentPage] = useState(1); // Current page for bet history pagination
     const [betsPerPage] = useState(10); // Number of bets to display per page
 
+
+    //stats
     const calculateStats = () => {
     if (!Array.isArray(bets) || bets.length === 0) {
         return { totalBets: 0, totalWagered: 0, totalWon: 0, totalLost: 0, netProfit: 0, winRate: 0, maxBet: 0, maxLoss: 0, maxWin: 0 };
@@ -374,17 +376,33 @@ const stats = calculateStats();
                                         <GameStats gameStats={gameStats} />
                                     </div>
                                 </Tab>
-                     <Row>
-                        <Col sm={6} md={4} className="mb-3"><div className="stat-item"><h6>Total Bets</h6><h4>{stats.totalBets}</h4></div></Col>
-                        <Col sm={6} md={4} className="mb-3"><div className="stat-item"><h6>Total Wagered</h6><h4>${stats.totalWagered.toFixed(2)}</h4 ></div></Col>
-                        <Col sm={6} md={4} className="mb-3"><div className="stat-item"><h6>Win Rate</h6><h4>{(stats.winRate?? 0).toFixed(1)}%</h4></div></Col>
-                        <Col sm={6} md={4} className="mb-3"><div className="stat-item"><h6>Total Won</h6><h4 className="text-success">${stats.totalWon.toFixed(2)}</h4></div></Col>
-                        <Col sm={6} md={4} className="mb-3"><div className="stat-item"><h6>Total Lost</h6><h4 className="text-danger">${stats.totalLost.toFixed(2)}</h4></div></Col>
-                        <Col sm={6} md={4} className="mb-3"><div className="stat-item"><h6>Net Profit</h6><h4 className={stats.netProfit >= 0 ? 'text-success' : 'text-danger'}>${stats.netProfit.toFixed(2)}</h4></div></Col>
-                        <Col sm={6} md={4} className="mb-3"><div className="stat-item"><h6>Max bet</h6><h4>${stats.maxBet.toFixed(2)}</h4></div></Col>
-                        <Col sm={6} md={4} className="mb-3"><div className="stat-item"><h6>Max Loss</h6><h4 className="text-danger">${stats.maxLoss.toFixed(2)}</h4></div></Col>
-                        <Col sm={6} md={4} className="mb-3"><div className="stat-item"><h6>Max Win</h6><h4 className="text-success">${stats.maxWin.toFixed(2)}</h4></div></Col>
-                    </Row>
+                                {/* Bet Statistics Tab - Summary of betting statistics */}
+                                <Tab eventKey="betStats" title={<><FaPercentage className="me-1" /> Bet Statistics</>}>
+                                    <div className="p-3 card-tab-body">
+                                        <h5 className="mb-3">Betting Statistics</h5>
+                                        <p className="text-muted">Here you can find a summary of your betting activity, including total bets, win rate, and more.</p>
+                                        <Button
+                                            variant="outline-secondary"
+                                            className="mb-3"
+                                            onClick={handleRefresh}
+                                            disabled={isRefreshing}
+                                        >
+                                            <FaSync className="me-1" />
+                                            {isRefreshing ? 'Refreshing...' : 'Refresh Data'}
+                                        </Button>   
+                                        <Row>
+                                            <Col sm={6} md={4} className="mb-3"><div className="stat-item"><h6>Total Bets</h6><h4>{stats.totalBets}</h4></div></Col>
+                                            <Col sm={6} md={4} className="mb-3"><div className="stat-item"><h6>Total Wagered</h6><h4>${stats.totalWagered.toFixed(2)}</h4 ></div></Col>
+                                            <Col sm={6} md={4} className="mb-3"><div className="stat-item"><h6>Win Rate</h6><h4>{(stats.winRate?? 0).toFixed(1)}%</h4></div></Col>
+                                            <Col sm={6} md={4} className="mb-3"><div className="stat-item"><h6>Total Won</h6><h4 className="text-success">${stats.totalWon.toFixed(2)}</h4></div></Col>
+                                            <Col sm={6} md={4} className="mb-3"><div className="stat-item"><h6>Total Lost</h6><h4 className="text-danger">${stats.totalLost.toFixed(2)}</h4></div></Col>
+                                            <Col sm={6} md={4} className="mb-3"><div className="stat-item"><h6>Net Profit</h6><h4 className={stats.netProfit >= 0 ? 'text-success' : 'text-danger'}>${stats.netProfit.toFixed(2)}</h4></div></Col>
+                                            <Col sm={6} md={4} className="mb-3"><div className="stat-item"><h6>Max bet</h6><h4>${stats.maxBet.toFixed(2)}</h4></div></Col>
+                                            <Col sm={6} md={4} className="mb-3"><div className="stat-item"><h6>Max Loss</h6><h4 className="text-danger">${stats.maxLoss.toFixed(2)}</h4></div></Col>
+                                            <Col sm={6} md={4} className="mb-3"><div className="stat-item"><h6>Max Win</h6><h4 className="text-success">${stats.maxWin.toFixed(2)}</h4></div></Col>
+                                        </Row>
+                                    </div>
+                                </Tab>
                                 {/* Bet History Tab - Paginated bet history table */}
                                 <Tab eventKey="bets" title={<><FaGamepad className="me-1" /> Bet History</>}>
                                     <BetHistory 
