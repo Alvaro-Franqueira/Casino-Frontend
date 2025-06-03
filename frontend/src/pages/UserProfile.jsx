@@ -366,7 +366,7 @@ const stats = calculateStats();
                     <Card.Header style={{ margin: 10, marginLeft:20, padding: 0, display: 'inline-block' }}>
                             <Tabs defaultActiveKey="stats" id="profile-tabs" className="card-header-tabs justify-content-around">
                                 {/* Statistics Tab - Balance chart and game stats */}
-                                <Tab eventKey="stats" title={<><FaCoins className="me-1" /> <Overview></Overview></>}>
+                                <Tab eventKey="stats" title={<><FaCoins className="me-1" /> Overview</>}>
                                     <div className="p-3 card-tab-body">
                                         <BalanceChart 
                                             balanceHistory={balanceHistory}
